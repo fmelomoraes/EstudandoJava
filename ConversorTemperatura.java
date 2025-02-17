@@ -1,37 +1,36 @@
-package ConversorTemperatura;
-
 import java.util.Scanner;
 
 public class ConversorTemperatura {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int opcao;
 
-        System.out.println("=== Conversor de Temperatura ===");
+        System.out.println("Escolha a conversão desejada: ");
+        System.out.println("1. Celsius para Fahrenheit ");
+        System.out.println("2. Fahrenheit para Celsius");
 
-        System.out.print("Digite a temperatura: ");
-        double valor = scanner.nextDouble();
+        int escolha = scanner.nextInt();
 
-        System.out.print("Digite a escala (C, F ou K): ");
-        char escala = scanner.next().toUpperCase().charAt(0);
-
-        System.out.println("Escolha a conversão: 1 para Fahrenheit, 2 para Kelvin");
-        opcao = scanner.nextInt();
-
-        Temperatura temperatura = new Temperatura(valor, escala);
-
-        switch (opcao){
-            case 1:
-                System.out.println("Convertido para Fahrenheit: " + temperatura.converteParaFahrenheit());
-                break;
-            case 2:
-                System.out.println("Convertido para Kelvin: " + temperatura.converteParaKelvin());
-                break;
-            default:
-                System.out.println("Opção inválida.");
-                break;
+        if (escolha == 1){
+            System.out.println("Digite a temperatura em Celsius: ");
+            double celsius = scanner.nextDouble();
+            double fahrenheit = celsiusParaFahrenheit(celsius);
+            System.out.printf("%.2f Celsius é igual a %.2f Fahrenheit%n", celsius, fahrenheit);
+        } else if (escolha == 2){
+            System.out.println("Digite a temperatura em Fahrenheit: ");
+            double fahrenheit = scanner.nextDouble();
+            double celsius = fahrenheitParaCelsius(fahrenheit);
+            System.out.printf("%.2f Fahrenheit é igual a %.2f Celsius%n\", fahrenheit, celsius");
+        } else {
+            System.out.println("Escolha inválida! ");
         }
-
         scanner.close();
+
     }
+
+    public static double celsiusParaFahrenheit(double celsius){
+        return (celsius * 9/5) + 32;
+    }
+    public static double fahrenheitParaCelsius(double fahrenheit){
+        return (fahrenheit - 32) * 5/9;
+        }
 }
