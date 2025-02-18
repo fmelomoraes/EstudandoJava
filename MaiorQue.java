@@ -33,6 +33,8 @@ public class MaiorQue {
         System.out.println("O número "+num01+" é menor que o número "+num02);
         }
         scanner.close();
+
+        /*Enviando para o GitHub via Comandos*/
     }
 
 
